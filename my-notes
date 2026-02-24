@@ -1,0 +1,6 @@
+==============    Steps to Install Angular   ===============
+
+1. Install node.js
+  ( check in terminal version : node -v, npm -v)
+2. Install Angular CLI globally. 
+  ( check in terminal version : ng -version)
