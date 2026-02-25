@@ -4,3 +4,5 @@
   ( check in terminal version : node -v, npm -v)
 2. Install Angular CLI globally. 
   ( check in terminal version : ng -version)
+3. Create new app : ng new app-name.
+4. Run app : ng serve.
