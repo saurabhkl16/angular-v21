@@ -1,10 +1,25 @@
 import { Component, computed, effect, signal } from '@angular/core';
 import { Login } from './login/login';
 import { FormsModule } from '@angular/forms';
+import { Child } from './child/child';
+import { CommonModule } from '@angular/common';
+import { ControlCount } from './control-count/control-count';
+import { DisplayCount } from './display-count/display-count';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [Login,FormsModule],
+  imports: [
+    Login,
+    FormsModule,
+    Child,
+    CommonModule,
+    ControlCount,
+    DisplayCount,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -12,11 +27,14 @@ export class App {
   protected readonly title = signal('tutorial-v21');
   public count = 0;
   public name = '';
+  public today = new Date();
+  public users = ['skl', 'sdsd', 'Sdsfsf', 'wrewrws'];
   public username = signal('');
-  public surname = '';
+  public surname = 'lomte';
   public isReadonly = false;
   public normalProperty = 0;
   public signalData = signal(0);
+  // public selectedUser = signal('');
 
   // public height = 10;
   // public width = 10;
@@ -82,5 +100,9 @@ export class App {
     } else {
       this.speed.set(this.speed() - 10);
     }
+  }
+
+  public selectedUserName(name: string) {
+    console.log(name);
   }
 }

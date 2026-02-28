@@ -1,48 +1,73 @@
-<h1>Welcome</h1>
+<h1>Welcome {{ today | date }}</h1>
 <app-login></app-login>
 
-<h1>Event Binding</h1>
+<hr />
+<h2>links</h2>
+<ul>
+  <li>
+    <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
+  </li>
+  <li><a routerLinkActive="active" routerLink="/about">About</a></li>
+  <li><a routerLinkActive="active" routerLink="/login">Login</a></li>
+  <li><a routerLinkActive="active" routerLink="/pages">Pages</a></li>
+  <li><a routerLinkActive="active" routerLink="/profile" [queryParams]="{ id: 1 }">Profile</a></li>
+  <li><a routerLinkActive="active" routerLink="/profile" [queryParams]="{ id: 2 }">Profile</a></li>
+</ul>
+<router-outlet></router-outlet>
+<hr />
+<!-- ---------------------------------------------------------------- -->
+<h1>Global store with signal</h1>
+<hr />
+<app-control-count></app-control-count>
+<hr />
+<app-display-count></app-display-count>
+<hr />
+<!-- ---------------------------------------------------------------- -->
+
+<!-- <h1>Event Binding</h1>
 <button (click)="increase('-')">minus</button>
 <h3>{{ count }}</h3>
 <button (click)="increase('+')">add</button>
 
-<input (input)="getInput($event)" />{{ name }}
+<input (input)="getInput($event)" />{{ name }} -->
 
 <!-- ---------------------------------------------------------------- -->
 
-<h1>Propert Binding</h1>
+<!-- <h1>Propert Binding</h1>
 <input type="text" readonly="{{ isReadonly }}" />
-<input type="text" [readonly]="isReadonly" />
+<input type="text" [readonly]="isReadonly" /> -->
 
 <!-- ---------------------------------------------------------------- -->
 
-<h1>Signals</h1>
+<!-- <h1>Signals</h1>
 <p>{{ normalProperty }}</p>
 <button (click)="changeProperty()">changeProperty</button>
 
 <p>{{ signalData() }}</p>
-<button (click)="changeSignalVal()">changeSignalVal</button>
+<button (click)="changeSignalVal()">changeSignalVal</button> -->
 
 <!-- ---------------------------------------------------------------- -->
-<h1>Computed Signal</h1>
+<!-- <h1>Computed Signal</h1>
 <h2>{{ height() }}</h2>
 <h2>{{ area() }}</h2>
-<button (click)="handleArea()">Change height</button>
+<button (click)="handleArea()">Change height</button> -->
 
 <!-- ---------------------------------------------------------------- -->
-<h1>Effect</h1>
+<!-- <h1>Effect</h1>
 <div class="effect">
   <button (click)="handleSpeed('-')" [disabled]="speed() == 0">decrease</button>
   <h2 [style.color]="speedColor">{{ speed() }}</h2>
   <button (click)="handleSpeed('+')" [disabled]="speed() == 190">increase</button>
-</div>
+</div> -->
 
 <!-- ---------------------------------------------------------------- -->
 <h1>Two way data binding</h1>
 Name:<input type="text" [value]="username()" (input)="username.set($event.target.value)" />{{
   username()
 }}
-<br>
-Sur-name:<input type="text" [(ngModel)]="surname" />{{
-  surname
-}}
+<br />
+Sur-name:<input type="text" [(ngModel)]="surname" />{{ surname }}
+<!-- --------------------------------------------------------------------- -->
+@for (user of users; track user) {
+  <app-child [userName]="user" (selectedUser)="selectedUserName($event)"> </app-child>
+}
